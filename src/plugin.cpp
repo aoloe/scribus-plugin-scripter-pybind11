@@ -29,7 +29,7 @@ namespace Scripter {
 
 Plugin::Plugin()
 {
-	languageChange();
+	// languageChange();
 }
 
 Plugin::~Plugin()
@@ -66,6 +66,7 @@ void Plugin::deleteAboutData(const AboutData* about) const
 
 bool Plugin::initPlugin()
 {
+	qDebug() << "init plugin";
 	return true;
 }
 
@@ -77,9 +78,13 @@ bool Plugin::cleanupPlugin()
 	return true;
 }
 
-void Plugin::addToMainWindowMenu(ScribusMainWindow* mw)
+void Plugin::addToMainWindowMenu(ScribusMainWindow* mainWindow)
 {
-	// scripter.addToMainWindowMenu(mw);
+	qDebug() << "add to main window menu";
+	// TODO: it would be nice if mainWindow would be passed in the constructor...
+	scripter.setScribusMainWindow(mainWindow);
+	scripter.addActions();
+	languageChange(); // TODO: this should go in the constructor or in initPlugin(), but at that point we don't have the menus and the translatable items are not ready yet.
 }
 
 } // namespaces
