@@ -17,8 +17,7 @@ void Scripter::addActions()
 {
 	actions.insert("scripter11Execute", new ScrAction(QObject::tr("&Execute Script..."), QKeySequence(), this));
 	actions["scripter11Execute"]->setMenuRole(QAction::NoRole);
-	// TODO: use new world signals and slots
-	connect(actions["scripter11Execute"], SIGNAL(triggered()) , this, SLOT(openScriptFile()));
+	connect(actions["scripter11Execute"], &ScrAction::triggered , this, &Scripter::openScriptFile);
 
 	auto menu{scribusMainWindow->scrMenuMgr};
 	menu->createMenu("Scripter11", QObject::tr("&Script11"));
