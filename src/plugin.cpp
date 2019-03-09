@@ -44,7 +44,7 @@ void Plugin::languageChange()
 
 const QString Plugin::fullTrName() const
 {
-	return QObject::tr("Scripter pybind11");
+	return tr("Scripter pybind11");
 }
 
 const ScActionPlugin::AboutData* Plugin::getAboutData() const
@@ -66,7 +66,6 @@ void Plugin::deleteAboutData(const AboutData* about) const
 
 bool Plugin::initPlugin()
 {
-	qDebug() << "init plugin";
 	return true;
 }
 
@@ -80,7 +79,6 @@ bool Plugin::cleanupPlugin()
 
 void Plugin::addToMainWindowMenu(ScribusMainWindow* mainWindow)
 {
-	qDebug() << "add to main window menu";
 	// TODO: it would be nice if mainWindow would be passed in the constructor...
 	scripter.setScribusMainWindow(mainWindow);
 	scripter.addActions();
