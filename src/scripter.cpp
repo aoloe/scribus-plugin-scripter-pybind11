@@ -26,22 +26,23 @@ void Scripter::addActions()
 	menu->addMenuItemString("scripter11Execute", "Scripter11");
 
 	menu->addMenuStringToMenuBarBefore("Scripter11", "Windows");
-	menu->addMenuItemStringstoMenuBar("Scripter11", actions);
+	menu->addMenuItemStringsToMenuBar("Scripter11", actions);
 }
 
 void Scripter::openScriptFile()
 {
 	// TODO: find a good value for the path
 	auto path = QFileDialog::getOpenFileName(scribusMainWindow,
-	    tr("Open Python File"), "/home/ale", tr("Python Files (*.py)"));
+	    tr("Open Python File"), QDir::homePath(), tr("Python Files (*.py)"));
 	qDebug() << path;
 
-	// runScriptFile(fileName)
+	runScriptFile(path);
 }
 
 void Scripter::runScriptFile(QString path)
 {
-    // py::eval_file(fileName, py::globals(), locals);
+	auto local = py::dict();
+    py::eval_file(path.toUtf8().constData(), py::globals(), local);
 }
 
 } // namespaces
