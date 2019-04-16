@@ -32,7 +32,7 @@ void init_ScripterAPI(py::module &m) {
 }
 }
 
-PYBIND11_MODULE(scripterapi, m) {
+PYBIND11_MODULE(scripterpybind11api, m) {
 	m.doc() = "Python interface for Scribus";
 	ScribusPlugin::Scripter::API::init_ScripterAPI(m);
 }
