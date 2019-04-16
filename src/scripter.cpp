@@ -1,4 +1,7 @@
+#include <memory>
+
 #include "scripter.h"
+#include "API/API.h"
 
 #include "scraction.h"
 #include "ui/scmwmenumanager.h" // scrMenuMgr
@@ -41,8 +44,14 @@ void Scripter::openScriptFile()
 
 void Scripter::runScriptFile(QString path)
 {
-	auto local = py::dict();
-    py::eval_file(path.toUtf8().constData(), py::globals(), local);
+    API::API scripterAPI;
+    // scripterAPI.setDocument(document);
+
+    auto module = py::module::import("scripterpybind11api");
+
+	// TODO: probably, pass it by value
+    auto locals = py::dict("Scribus"_a = py::cast(scripterAPI, py::return_value_policy::reference));
+    py::eval_file(path.toUtf8().constData(), py::globals(), locals);
 }
 
 } // namespaces
