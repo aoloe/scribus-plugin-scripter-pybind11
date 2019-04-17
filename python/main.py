@@ -1,3 +1,8 @@
-print('chuila')
+import scribus
+import sys
 
-# src/scribus-plugin-scripter-pybind11/python/main.py
+try:
+    doc = scribus.get_current_document()
+    print(doc.get_name())
+except:
+    print("Unexpected error:", sys.exc_info()[0])

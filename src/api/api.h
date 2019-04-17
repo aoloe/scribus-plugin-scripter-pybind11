@@ -8,6 +8,8 @@
 #include <pybind11/embed.h>
 #define slots Q_SLOTS
 
+class Document;
+
 namespace ScribusPlugin {
 namespace Scripter {
 namespace API {
@@ -16,7 +18,6 @@ class API
 {
 	public:
 		API() {}
-		std::string getCurrentDocumentName();
 };
 
 } // namespaces
@@ -24,4 +25,3 @@ class API
 }
 
 #endif
-
