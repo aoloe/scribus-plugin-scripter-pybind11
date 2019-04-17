@@ -47,6 +47,8 @@ We will use the Github issues in this repository for discussing the development 
 
 ## Install
 
+You need to first install [pybind11](https://github.com/pybind/pybind11).
+
 Clone the `scribus-plugin-actionSearch` repository and put – or symlink – its `src` directory into `scribus/plugins/` as `scripter-pybind11`. Then add 
 
     ADD_SUBDIRECTORY(scripter-pybind11)
